@@ -16,7 +16,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Blog', 'prefix' => 'blog'], f
 
 // Админка блога
 $groupData = [
-    'namespace' => 'Blog\Admin',
+    'namespace' => 'App\Http\Controllers\Blog\Admin',
     'prefix' => 'admin/blog',
 ];
 
