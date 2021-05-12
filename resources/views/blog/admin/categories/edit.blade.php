@@ -3,6 +3,16 @@
 @section('content')
     <form method="post" action="{{route('blog.admin.categories.update', $item->id)}}">
         <div class="container">
+        @if ($errors->any())
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="alert alert-danger">
+                        <button type="button" class="close">Закрыть</button>
+                        {{ $errors->first() }}
+                    </div>
+                </div>
+            </div>
+        @endif
             <div class="row justify-content-center">
                 @method('PATCH')
                 @csrf
