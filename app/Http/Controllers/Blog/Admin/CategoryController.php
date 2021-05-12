@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Blog\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class CategoryController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        dd(__METHOD__);
     }
 
     /**
@@ -25,7 +25,7 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        dd(__METHOD__);
     }
 
     /**
@@ -37,7 +37,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd(__METHOD__);
     }
 
     /**
@@ -47,7 +47,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        dd(__METHOD__);
     }
 
     /**
@@ -58,6 +58,6 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd(__METHOD__);
     }
 }
