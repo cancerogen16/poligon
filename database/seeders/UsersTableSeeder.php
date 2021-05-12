@@ -19,12 +19,12 @@ class UsersTableSeeder extends Seeder
         $data = [
             [
                 'name' => 'Автор неизвестен',
-                'email' => 'author@mail.ru',
+                'email' => 'author_unknown@mail.ru',
                 'password' => Hash::make(Str::random(16)),
             ],
             [
                 'name' => 'Автор',
-                'email' => 'nauthor@mail.ru',
+                'email' => 'author@mail.ru',
                 'password' => Hash::make('123123'),
             ],
         ];
