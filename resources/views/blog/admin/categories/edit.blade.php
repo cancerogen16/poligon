@@ -2,7 +2,14 @@
 
 @section('content')
     @php /** @var \App\Models\BlogCategory $item */ @endphp
+
+@if ($item->exists)
     <form method="post" action="{{route('blog.admin.categories.update', $item->id)}}">
+        @method('PATCH')
+@else
+    <form method="post" action="{{route('blog.admin.categories.store', $item->id)}}">
+@endif
+        @csrf
         <div class="container">
             @php /** @var \Illuminate\Support\ViewErrorBag $errors */ @endphp
         @if ($errors->any())
@@ -30,8 +37,6 @@
             </div>
         @endif
             <div class="row justify-content-center">
-                @method('PATCH')
-                @csrf
                 <div class="col-md-8">
                     @include('blog.admin.categories.includes.item_edit_main_col')
                 </div>
