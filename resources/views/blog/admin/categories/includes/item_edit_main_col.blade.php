@@ -15,7 +15,7 @@
                 </div>
                 <div class="form-group">
                     <label for="slug" class="form-label">Ярлык</label>
-                    <input id="slug" name="title" type="text" class="form-control" value="{{ $item->slug }}">
+                    <input id="slug" name="slug" type="text" class="form-control" value="{{ $item->slug }}">
                 </div>
                 <div class="form-group">
                     <label for="parent_id" class="form-label">Родитель</label>
