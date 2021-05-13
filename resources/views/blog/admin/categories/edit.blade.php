@@ -14,6 +14,16 @@
                 </div>
             </div>
         @endif
+        @if (session('success'))
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="alert alert-success">
+                        <button type="button" class="close">Закрыть</button>
+                        {{ session()->get('success') }}
+                    </div>
+                </div>
+            </div>
+        @endif
             <div class="row justify-content-center">
                 @method('PATCH')
                 @csrf
