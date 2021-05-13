@@ -3,6 +3,7 @@
 @section('content')
     <form method="post" action="{{route('blog.admin.categories.update', $item->id)}}">
         <div class="container">
+            @php /** @var \Illuminate\Support\ViewErrorBag $errors */ @endphp
         @if ($errors->any())
             <div class="row justify-content-center">
                 <div class="col-12">
