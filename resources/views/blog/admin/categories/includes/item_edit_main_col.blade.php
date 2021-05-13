@@ -11,7 +11,7 @@
             <div class="tab-pane active" id="maindata" role="tabpanel" aria-labelledby="home-tab">
                 <div class="form-group">
                     <label for="title" class="form-label">Заголовок</label>
-                    <input id="title" name="title" type="text" class="form-control" value="{{ $item->title }}" minlength="3" required>
+                    <input id="title" name="title" type="text" class="form-control" value="{{ old('title', $item->title) }}" minlength="3" required>
                 </div>
                 <div class="form-group">
                     <label for="slug" class="form-label">Ярлык</label>
