@@ -8,7 +8,9 @@
             <div class="row justify-content-center">
                 <div class="col-12">
                     <div class="alert alert-danger">
-                        <button type="button" class="close">Закрыть</button>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">x</span>
+                        </button>
                         {{ $errors->first() }}
                     </div>
                 </div>
@@ -18,7 +20,9 @@
             <div class="row justify-content-center">
                 <div class="col-12">
                     <div class="alert alert-success">
-                        <button type="button" class="close">Закрыть</button>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">x</span>
+                        </button>
                         {{ session()->get('success') }}
                     </div>
                 </div>
