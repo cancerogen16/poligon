@@ -5,14 +5,33 @@ namespace App\Http\Controllers\Blog\Admin;
 use App\Http\Requests\BlogCategoryCreateRequest;
 use App\Http\Requests\BlogCategoryUpdateRequest;
 use App\Models\BlogCategory;
+use App\Repositories\BlogCategoryRepository;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Str;
 
+/**
+ * Управление категориями блога
+ *
+ * Class CategoryController
+ * @package App\Http\Controllers\Blog\Admin
+ */
 class CategoryController extends BaseController
 {
+    /**
+     * @var BlogCategoryRepository
+     */
+    private $blogCategoryRepository;
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->blogCategoryRepository = app(BlogCategoryRepository::class);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -20,9 +39,10 @@ class CategoryController extends BaseController
      */
     public function index()
     {
-        $paginator = BlogCategory::paginate(15);
+        $paginator = $this->blogCategoryRepository->getAllWithPaginate(5);
 
-        return view('blog.admin.categories.index', compact('paginator'));
+        return view('blog.admin.categories.index',
+            compact('paginator'));
     }
 
     /**
@@ -33,11 +53,16 @@ class CategoryController extends BaseController
      */
     public function edit(int $id)
     {
-        $item = BlogCategory::findOrFail($id);
+        $item = $this->blogCategoryRepository->getEdit($id);
 
-        $categoryList = BlogCategory::all();
+        if (empty($item)) {
+            abort(404);
+        }
 
-        return view('blog.admin.categories.edit', compact('item', 'categoryList'));
+        $categoryList = $this->blogCategoryRepository->getForComboBox();
+
+        return view('blog.admin.categories.edit',
+            compact('item', 'categoryList'));
     }
 
     /**
@@ -49,7 +74,7 @@ class CategoryController extends BaseController
      */
     public function update(BlogCategoryUpdateRequest $request, int $id): RedirectResponse
     {
-        $item = BlogCategory::find($id);
+        $item = $this->blogCategoryRepository->getEdit($id);
 
         if (empty($item)) {
             return back()
@@ -85,9 +110,10 @@ class CategoryController extends BaseController
     {
         $item = new BlogCategory();
 
-        $categoryList = BlogCategory::all();
+        $categoryList = $this->blogCategoryRepository->getForComboBox();
 
-        return view('blog.admin.categories.edit', compact('item', 'categoryList'));
+        return view('blog.admin.categories.edit',
+            compact('item', 'categoryList'));
     }
 
     /**

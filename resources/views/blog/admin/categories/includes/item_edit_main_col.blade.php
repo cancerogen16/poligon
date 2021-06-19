@@ -21,7 +21,7 @@
                     <label for="parent_id" class="form-label">Родитель</label>
                     <select id="parent_id" name="parent_id" class="form-control" required>
                         @foreach($categoryList as $parentCategory)
-                        <option value="{{ $parentCategory->id }}" @if($parentCategory->id == $item->parent_id) selected @endif>{{ $parentCategory->id }}. {{ $parentCategory->title }}</option>
+                        <option value="{{ $parentCategory->id }}" @if($parentCategory->id == $item->parent_id) selected @endif>{{ $parentCategory->id_title }}</option>
                         @endforeach
                     </select>
                 </div>
